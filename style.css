@@ -1,0 +1,561 @@
+/* --- Global Reset & Luxury Typography --- */
+:root {
+    --color-dark-primary: #0A0A0A; /* Apex Dark */
+    --color-dark-secondary: #181818; /* Lighter Dark for sections */
+    --color-accent: #00bcd4; /* Cyan/Teal for data/tech look */
+    --color-luxury-gold: #FFD700; /* Subtle Gold Accent */
+    --color-text-light: #f4f4f4;
+    --color-text-dim: #999;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--color-dark-primary);
+    color: var(--color-text-light);
+    line-height: 1.6;
+    overflow-x: hidden;
+    scroll-behavior: smooth; /* Smooth scrolling for nav links */
+}
+
+a {
+    color: var(--color-text-light);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+h1, h2, h3 {
+    font-weight: 600;
+}
+
+.section-padding {
+    padding: 120px 5%;
+}
+
+.dark-section {
+    background-color: var(--color-dark-secondary);
+}
+
+/* --- Header & Navigation --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: background-color 0.4s ease;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--color-luxury-gold);
+}
+
+nav a {
+    margin-left: 35px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+nav a:not(.nav-button)::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-accent);
+    bottom: -5px;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+nav a:not(.nav-button):hover::after {
+    width: 100%;
+}
+
+.nav-button {
+    background: linear-gradient(45deg, var(--color-accent), #00e5ff);
+    color: var(--color-dark-primary);
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.nav-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(0, 188, 212, 0.5);
+}
+
+/* --- Hero Section (3D & Advanced Layout) --- */
+#hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 50%;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 4.5rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: var(--color-luxury-gold);
+}
+
+.hero-content h2 {
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-bottom: 40px;
+    color: var(--color-text-dim);
+}
+
+.hero-band-visual {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%) perspective(1000px); 
+    width: 450px;
+    transition: transform 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Exaggerated transition for luxury feel */
+}
+
+/* 3D effect on hover */
+.hero-band-visual:hover {
+    transform: translateY(-50%) perspective(1000px) rotateY(10deg) scale(1.05);
+}
+
+.band-img {
+    width: 100%;
+    height: auto;
+    /* Simulate light shining from one side - for 3D feel */
+    filter: drop-shadow(5px 5px 30px rgba(0, 188, 212, 0.5)) brightness(1.1); 
+    animation: pulseGlow 4s infinite alternate; /* Subtle breathing glow */
+}
+
+@keyframes pulseGlow {
+    0% { filter: drop-shadow(5px 5px 30px rgba(0, 188, 212, 0.3)); }
+    100% { filter: drop-shadow(5px 5px 40px rgba(0, 188, 212, 0.6)); }
+}
+
+.cta-button {
+    display: inline-block;
+    background: linear-gradient(45deg, var(--color-accent), #00e5ff);
+    color: var(--color-dark-primary);
+    font-weight: 700;
+    padding: 15px 40px;
+    border-radius: 50px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.4s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 188, 212, 0.4);
+}
+
+/* --- Product Showcase Section --- */
+.product-showcase-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.showcase-visual {
+    text-align: center;
+}
+
+.band-img-large {
+    width: 80%;
+    height: auto;
+    /* Subtle 3D tilt */
+    transform: rotateY(-5deg) rotateX(5deg) scale(1);
+    transition: transform 0.6s ease-out;
+    filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.2));
+}
+
+.band-img-large:hover {
+    transform: rotateY(0deg) rotateX(0deg) scale(1.05);
+}
+
+.showcase-details h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: var(--color-luxury-gold);
+}
+
+.showcase-details ul {
+    list-style: none;
+    margin-top: 30px;
+}
+
+.showcase-details li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    font-weight: 300;
+    transition: background-color 0.3s ease;
+}
+
+.showcase-details li:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* --- Feature Grid --- */
+#features h2, #gallery h2, #pricing h2 { /* Apply styles to new sections */
+    text-align: center;
+    margin-bottom: 60px;
+    font-size: 2.5rem;
+    color: var(--color-accent);
+}
+
+.feature-grid {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background-color: var(--color-dark-secondary);
+    padding: 40px;
+    border-radius: 15px;
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 0%, rgba(0, 188, 212, 0.1) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 15px var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+.feature-card:hover::before {
+    opacity: 1;
+}
+
+.feature-card h3 {
+    color: var(--color-luxury-gold);
+    margin-bottom: 15px;
+}
+
+/* --- Gallery Section (NEW) --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    background-color: var(--color-dark-primary); /* Ensures dark background if image has alpha issues */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 350px; /* Fixed height for consistent look */
+    object-fit: contain; /* Ensures entire image is visible, no cropping */
+    display: block;
+    filter: brightness(0.9); /* Slightly dim for overlay effect */
+    transition: filter 0.4s ease, transform 0.4s ease;
+    transform: scale(1.05); /* Slightly zoomed in initial state */
+}
+
+.gallery-item:hover img {
+    filter: brightness(1.1); /* Brighten on hover */
+    transform: scale(1); /* Zoom out slightly on hover */
+}
+
+.gallery-item .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+    color: var(--color-luxury-gold);
+    font-size: 1.2rem;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.gallery-item:hover .overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* --- Pricing Section --- */
+.pricing-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.pricing-card {
+    background-color: var(--color-dark-primary);
+    padding: 40px;
+    border-radius: 15px;
+    width: 380px;
+    text-align: center;
+    border: 3px solid transparent;
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.pricing-card.premium {
+    border-color: var(--color-luxury-gold);
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+    transform: scale(1.05);
+}
+
+.pricing-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+.pricing-card ul {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.pricing-card ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--color-text-dim);
+}
+
+.select-button {
+    display: block;
+    padding: 12px 0;
+    border-radius: 5px;
+    background-color: var(--color-accent);
+    color: var(--color-dark-primary);
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.pricing-card.premium .select-button {
+    background-color: var(--color-luxury-gold);
+}
+
+.select-button:hover {
+    background-color: #00e5ff;
+    transform: scale(1.03);
+}
+
+.pricing-card.premium .select-button:hover {
+    background-color: #ffd86b;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 40px 5%;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--color-text-dim);
+    font-size: 0.9rem;
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+.social-links a {
+    color: var(--color-text-dim);
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--color-luxury-gold);
+}
+
+/* --- Scroll Animation Classes --- */
+.scroll-hidden {
+    opacity: 0;
+    transform: translateY(50px); 
+    transition: opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1), transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.hero-content.scroll-hidden { /* Apply to hero content specifically for translateX */
+    transform: translateX(-50px);
+}
+
+.in-view {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+}
+/* ********************************************************** */
+/* ********** ADVANCED RESPONSIVENESS (MOBILE FIX) ********** */
+/* ********************************************************** */
+
+/* 1. Add Logo Highlight (as previously requested) */
+.logo {
+    /* Existing styles remain */
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--color-luxury-gold);
+    /* NEW: Advanced Glow/Shadow for Branding */
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5), 0 0 10px rgba(0, 188, 212, 0.3);
+}
+
+/* 2. Add Mobile Menu Toggle Styles (Crucial for header) */
+.menu-toggle {
+    display: none; /* Hidden on desktop */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.menu-toggle .bar {
+    height: 3px;
+    width: 100%;
+    background-color: var(--color-luxury-gold);
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Adjustments for tablets and smaller desktops (>= 769px and <= 1024px) */
+@media (max-width: 1024px) {
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+    .hero-content h2 {
+        font-size: 1.5rem;
+    }
+    .hero-band-visual {
+        width: 350px;
+    }
+}
+
+/* Mobile Phone Fix (<= 768px) */
+@media (max-width: 768px) {
+    /* HEADER & NAV: Fixes menu visibility and stacking */
+    header {
+        padding: 15px 5%;
+        flex-wrap: wrap; /* Allows logo and toggle to wrap */
+    }
+    nav {
+        display: none; /* Hides desktop nav */
+        width: 100%;
+        background-color: var(--color-dark-secondary);
+        flex-direction: column; /* Stacks links */
+        text-align: center;
+        padding: 20px 0;
+        position: absolute;
+        top: 61px;
+        left: 0;
+    }
+    nav.active {
+        display: flex; /* Show menu when JS adds 'active' class */
+    }
+    nav a {
+        margin: 10px 0;
+        padding: 5px 0;
+        font-size: 1rem;
+    }
+    .menu-toggle {
+        display: flex; /* Shows the mobile menu icon */
+    }
+
+    /* HERO SECTION: Fixes ordering by stacking elements vertically */
+    #hero {
+        flex-direction: column; /* Stacks content and image */
+        height: auto;
+        min-height: 80vh;
+        padding: 100px 5% 50px;
+        text-align: center;
+    }
+    .hero-content {
+        max-width: 100%;
+        margin-bottom: 40px;
+    }
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+    .hero-content h2 {
+        font-size: 1.2rem;
+    }
+    .hero-band-visual {
+        position: relative; /* Removes absolute positioning */
+        transform: none; /* Removes 3D parallax on mobile */
+        width: 80%;
+        right: auto;
+        top: auto;
+    }
+
+    /* GENERAL SECTIONS: Fixes column layouts by making them stack */
+    .section-padding {
+        padding: 80px 5%;
+    }
+    .product-showcase-grid {
+        grid-template-columns: 1fr; /* Stacks product details */
+    }
+    .feature-grid, .pricing-container {
+        flex-direction: column; /* Stacks cards vertically */
+        gap: 25px;
+    }
+    .pricing-card {
+        width: 100%;
+    }
+}
